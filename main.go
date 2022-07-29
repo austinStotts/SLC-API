@@ -16,12 +16,13 @@ func logFatal(err error) {
 
 func main() {
 	fmt.Println("Hello World")
-	//os.Getenv("psql_url")
 	psqlURL := "postgres://ebddjabf:u2RaNK1qawGzXy-xatygoQAI94cdkD2q@fanny.db.elephantsql.com/ebddjabf"
 	pgUrl, err := pq.ParseURL(psqlURL)
 	logFatal(err)
+
 	db, err := jet.Open("postgres", pgUrl)
 	logFatal(err)
+
 	var shows []*struct {
 		Id       int
 		Showid   string
